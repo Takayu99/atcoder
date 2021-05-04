@@ -1,3 +1,4 @@
+#Frog1
 n = int(input())
 h = list(map(int, input().split()))
 
