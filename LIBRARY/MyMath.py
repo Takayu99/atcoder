@@ -30,3 +30,11 @@ def num_divisor(n):
             div.append(n // i)
     return len(set(div))
 
+def bit_count(n):
+    #2進数表記した時の1の個数を返す
+    x = 0
+    while(n > 0):
+        if n & 1:
+            x += 1
+        n = n >> 1
+    return x
