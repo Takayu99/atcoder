@@ -1,52 +1,32 @@
-from collections import deque
-import queue
+n, m = map(int, input().split())
 
-G = [{}]
+abc = [list(map(int, input().split())) for _ in range(m)]
 
-def setNode(n):
-  global G
-  G = [{} for i in range(n)]
-def addEdge(s,t,w):
-  global G
-  G[s][t]=w
-def solve(s,t,k):
-  global G
-  fixed = {}
-  q = queue.PriorityQueue()
-  q.put((0,s))
-  while q.empty() == False:
-    w,x = q.get()
-    if x == t: return w
-    if x in fixed: continue
-    fixed[x] = w
-    for y in G[x]:
-      if (y in fixed) == False:
-        if y <= k or y == s or y == t:
-            q.put((w + G[x][y], y))
-  return 0
+INF = 10 ** 18
+dp = [[INF] * n for _ in range(n)]
 
-
-n,m = map(int,input().split())
-setNode(n)
-for i in range(m):
-  s,t,w = map(int,input().split())
-  s -= 1
-  t -= 1
-  G[s][t] = w
-#   G[t][s] = w
-# src, dst = 0, 1
-# print(solve(src,dst))
-dp1 = [[[] for _ in range(n)] for _ in range(n)]
-dp2 = [[-1] * n for _ in range(n)]
-ans = 0
+for v in abc:
+    dp[v[0] - 1][v[1] - 1] = v[2]
 for i in range(n):
-    for j in range(n):
-        for k in range(n):
-            ans += solve(i, j, k)
-            # print(ans)
+    dp[i][i] = 0
+
+ans = 0
+
+for k in range(n):
+    for i in range(n):
+        for j in range(n):
+            dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j])
+            if dp[i][j] < INF:
+                ans += dp[i][j]
+
 print(ans)
+<<<<<<< HEAD
 # print(G)
 dp2[1][1] = 0
 dp1[1][1].append()
 print(dp1)
 print(dp2)
+=======
+
+
+>>>>>>> 1d0cb6b4c52295f5fe9db49c4b77717d6f5ebe85
