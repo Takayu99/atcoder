@@ -20,13 +20,5 @@ for k in range(n):
                 ans += dp[i][j]
 
 print(ans)
-<<<<<<< HEAD
-# print(G)
-dp2[1][1] = 0
-dp1[1][1].append()
-print(dp1)
-print(dp2)
-=======
 
 
->>>>>>> 1d0cb6b4c52295f5fe9db49c4b77717d6f5ebe85
