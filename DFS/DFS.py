@@ -75,3 +75,11 @@ def dfs(g, v):
 dfs(G, 0)
 print(ans)
 
+
+#グラフが木の場合のDFS
+def dfs(u, p):
+    ans.append(u)
+    for v in G[u]:
+        if v != p:
+            dfs(v, u)
+
